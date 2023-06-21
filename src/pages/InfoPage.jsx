@@ -46,6 +46,18 @@ export const InfoPage = () => {
               {` ${data.catch_phrase}`}
             </p>
           </div>
+          {data.Images.length > 1 && (
+            <div className="photoSet description">
+              <h3>Photos</h3>
+              <ul className="photoList">
+                {data.Images.map((item) => (
+                  <li key={item.id}>
+                    <img src={item.url} alt={data.nickname} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </StyledInfoPage>

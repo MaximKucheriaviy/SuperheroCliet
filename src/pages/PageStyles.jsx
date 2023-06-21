@@ -52,5 +52,14 @@ export const StyledInfoPage = styled(StyledMain)`
         font-weight: 700;
       }
     }
+    & .photoList {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      & li {
+        width: 30%;
+      }
+    }
   }
 `;

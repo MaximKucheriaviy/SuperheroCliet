@@ -8,6 +8,23 @@ export const StyledMain = styled.main`
 
 export const StyledInfoPage = styled(StyledMain)`
   line-height: 1.5;
+  position: relative;
+  & .editButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid gray;
+    border-radius: 50%;
+    & .svg {
+      width: 50%;
+      height: 50%;
+    }
+  }
   & .mainInfo {
     display: flex;
     gap: 60px;

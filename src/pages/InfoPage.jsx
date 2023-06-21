@@ -2,6 +2,8 @@ import { StyledInfoPage } from "./PageStyles";
 import { useParams } from "react-router-dom";
 import { getHeroByID } from "../service/backAPI";
 import { useState, useEffect } from "react";
+import { BsPencilSquare } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 
 export const InfoPage = () => {
   const { id } = useParams();
@@ -18,6 +20,9 @@ export const InfoPage = () => {
   console.log(data);
   return (
     <StyledInfoPage>
+      <NavLink to={`/editHero/${id}`} className="editButton">
+        <BsPencilSquare className="svg" />
+      </NavLink>
       {data && (
         <div>
           <div className="mainInfo">

@@ -1,8 +1,9 @@
 import { Header } from "./components/header/Header";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
+import { HeroListPage } from "./pages/HeroListPage";
+import { InfoPage } from "./pages/InfoPage";
 import { CreateHero } from "./pages/CreateHero";
-import { HeroList } from "./pages/HeroList";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/createHero" element={<CreateHero />} />
-        <Route path="/heroList" element={<HeroList />} />
+        <Route path="/hero/:id" element={<InfoPage />} />
+        <Route path="/heroList" element={<HeroListPage />} />
       </Routes>
     </div>
   );

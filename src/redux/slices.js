@@ -23,3 +23,20 @@ export const HeroSlice = createSlice({
     },
   },
 });
+
+export const LoaderSlice = createSlice({
+  name: "LoaderState",
+  initialState: {
+    value: false,
+  },
+  reducers: {
+    showLoader(state, action) {
+      state.value = true;
+    },
+    hideLoader(state, action) {
+      state.value = false;
+    },
+  },
+});
+
+export const { showLoader, hideLoader } = LoaderSlice.actions;

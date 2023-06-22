@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "http://192.168.0.104:3001";
 
 export const getAllHeros = async (page = 1) => {
   try {

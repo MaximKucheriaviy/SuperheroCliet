@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { useState } from "react";
 import { createHero } from "../service/backAPI";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { showLoader, hideLoader } from "../redux/slices";
 
 export const CreateHero = () => {
   const nicknameID = useRef(v4());
@@ -19,6 +21,7 @@ export const CreateHero = () => {
   const [catchFrase, setCatchFrase] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onChage = ({ target }) => {
     switch (target.name) {
@@ -45,12 +48,16 @@ export const CreateHero = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
+    dispatch(showLoader());
     createHero(formData)
       .then((data) => {
         navigate(`/hero/${data._id}`);
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        dispatch(hideLoader());
       });
   };
 

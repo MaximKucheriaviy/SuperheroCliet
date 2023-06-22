@@ -9,6 +9,18 @@ export const StyledMain = styled.main`
 export const StyledInfoPage = styled(StyledMain)`
   line-height: 1.5;
   position: relative;
+  & .editInput {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    & button {
+      width: 100px;
+      height: 30px;
+    }
+    & input {
+      display: block;
+    }
+  }
   & .editButton {
     position: absolute;
     top: 20px;
@@ -20,6 +32,7 @@ export const StyledInfoPage = styled(StyledMain)`
     justify-content: center;
     border: 1px solid gray;
     border-radius: 50%;
+    background-color: transparent;
     & .svg {
       width: 50%;
       height: 50%;
@@ -34,8 +47,16 @@ export const StyledInfoPage = styled(StyledMain)`
       border: 1px solid gray;
       flex-shrink: 0;
     }
-    & h2 {
+    & h2,
+    .nicknameInput {
       font-size: 40px;
+    }
+
+    & .nicknameInput {
+      & input {
+        width: 400px;
+        font-size: 40px;
+      }
     }
     & .realName {
       margin-top: 30px;
@@ -77,6 +98,23 @@ export const StyledInfoPage = styled(StyledMain)`
       & li {
         width: 30%;
       }
+    }
+  }
+
+  & .descriptionInput {
+    font-size: 36px;
+    flex-direction: column;
+    align-items: flex-start;
+    & textarea {
+      display: block;
+      resize: none;
+      width: 800px;
+    }
+  }
+
+  & .catchPrase {
+    & input {
+      width: 600px;
     }
   }
 `;

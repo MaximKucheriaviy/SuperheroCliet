@@ -24,3 +24,16 @@ export const getHeroByID = async (id) => {
     throw err;
   }
 };
+
+export const editHeroTextData = async (field, id, value) => {
+  try {
+    const result = await axios.patch(`/hero/info/${field}`, {
+      id,
+      value,
+    });
+    return result.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};

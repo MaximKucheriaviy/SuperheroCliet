@@ -37,7 +37,7 @@ export const CreateHero = () => {
       case "origin_description":
         setDescription(target.value);
         break;
-      case "catchFrase":
+      case "catch_phrase":
         setCatchFrase(target.value);
         break;
       default:
@@ -112,7 +112,7 @@ export const CreateHero = () => {
         <div className="inputField">
           <label htmlFor={catchPhrase.current}>Catch phrase</label>
           <input
-            name="catchFrase"
+            name="catch_phrase"
             type="text"
             id={catchPhrase.current}
             value={catchFrase}

@@ -17,5 +17,6 @@ export const HeroListItemStyled = styled.li`
     width: 276px;
     height: 276px;
     border: 1px solid gray;
+    overflow: hidden;
   }
 `;

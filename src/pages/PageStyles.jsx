@@ -10,6 +10,13 @@ export const StyledMain = styled.main`
 export const StyledInfoPage = styled(StyledMain)`
   line-height: 1.5;
   position: relative;
+  & .addPhotoForm {
+    margin-bottom: 40px;
+    & button {
+      width: 100px;
+      height: 30px;
+    }
+  }
   & .editInput {
     display: flex;
     gap: 30px;

@@ -5,8 +5,7 @@ export const getHeros = createAsyncThunk(
   "heroes/getAll",
   async (page, thunAPI) => {
     try {
-      const result = await getAllHeros();
-      console.log(page);
+      const result = await getAllHeros(page);
       return result;
     } catch (err) {
       thunAPI.rejectWithValue(err);

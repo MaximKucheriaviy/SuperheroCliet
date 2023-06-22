@@ -1,6 +1,6 @@
 import { StyledInfoPage } from "./PageStyles";
 import { useParams } from "react-router-dom";
-import { editHeroTextData, getHeroByID } from "../service/backAPI";
+import { editHeroTextData, getHeroByID, addImages } from "../service/backAPI";
 import { useState, useEffect } from "react";
 import { BsPencilSquare } from "react-icons/bs";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
@@ -24,6 +24,26 @@ export const InfoPage = () => {
       })
       .catch((err) => {
         console.log(`${fieldName} patch error`);
+        console.log(err);
+      });
+  };
+
+  const onAddPhoto = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    formData.append("id", id);
+    addImages(formData)
+      .then(() => {
+        setEdit(false);
+        getHeroByID(id)
+          .then((result) => {
+            setData(result.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -135,9 +155,19 @@ export const InfoPage = () => {
               )}
             </div>
           </div>
-          {data.Images.length > 1 && (
-            <div className="photoSet description">
-              <h3>Photos</h3>
+          <div className="photoSet description">
+            <h3>Photos</h3>
+            {edit && (
+              <form className="addPhotoForm" onSubmit={onAddPhoto}>
+                <input
+                  type="file"
+                  name="Image"
+                  accept="image/jpeg,image/png,image/gif"
+                />
+                <button type="submit">add photo</button>
+              </form>
+            )}
+            {data.Images.length > 1 && (
               <ul className="photoList">
                 {data.Images.map((item) => (
                   <li key={item.id}>
@@ -145,8 +175,8 @@ export const InfoPage = () => {
                   </li>
                 ))}
               </ul>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )}
     </StyledInfoPage>

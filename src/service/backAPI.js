@@ -49,3 +49,15 @@ export const createHero = async (data) => {
     console.log(err);
   }
 };
+
+export const addImages = async (data) => {
+  try {
+    const result = await axios.patch("/hero/image", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return result.data;
+  } catch (err) {
+    console.log("create user axios error");
+    console.log(err);
+  }
+};

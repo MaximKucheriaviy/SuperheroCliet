@@ -37,3 +37,15 @@ export const editHeroTextData = async (field, id, value) => {
     throw err;
   }
 };
+
+export const createHero = async (data) => {
+  try {
+    const result = await axios.post("/hero", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return result.data.data;
+  } catch (err) {
+    console.log("create user axios error");
+    console.log(err);
+  }
+};

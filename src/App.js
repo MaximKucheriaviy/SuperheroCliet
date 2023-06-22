@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 function App() {
   const loaderState = useSelector((state) => state.loaderState.value);
+  const isHeroesLoading = useSelector((state) => state.heroes.isLoading);
   return (
     <div className="App">
       <Header />
@@ -21,6 +22,7 @@ function App() {
         <Route path="/heroList" element={<HeroListPage />} />
       </Routes>
       {loaderState && <Loader />}
+      {isHeroesLoading && <Loader />}
     </div>
   );
 }

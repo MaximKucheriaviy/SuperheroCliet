@@ -7,6 +7,33 @@ export const StyledMain = styled.main`
   padding-bottom: 40px;
 `;
 
+export const StyledMainPage = styled(StyledMain)`
+  background-image: url("./backgroundSuper.jpg");
+  min-height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+  gap: 40px;
+  & a {
+    width: 250px;
+    height: 100px;
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: brown;
+    border-radius: 70px;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    box-shadow: 0px 0px 10px black;
+    &:hover {
+      background-color: #a84444;
+    }
+  }
+`;
+
 export const StyledInfoPage = styled(StyledMain)`
   line-height: 1.5;
   position: relative;
@@ -44,6 +71,13 @@ export const StyledInfoPage = styled(StyledMain)`
     & .svg {
       width: 50%;
       height: 50%;
+    }
+  }
+  & .deleteButton {
+    right: 100px;
+    background-color: #ff6600;
+    &:hover {
+      background-color: #ff0000;
     }
   }
   & .mainInfo {
@@ -104,7 +138,24 @@ export const StyledInfoPage = styled(StyledMain)`
       flex-wrap: wrap;
       justify-content: center;
       & li {
+        position: relative;
         width: 30%;
+        & button {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 30px;
+          height: 30px;
+          background-color: #ffffff6a;
+
+          &:hover {
+            background-color: #ffffff;
+          }
+        }
       }
     }
   }
@@ -166,6 +217,25 @@ export const CreateHeroPageStyled = styled(StyledMain)`
       margin-right: auto;
       display: block;
       font-size: 34px;
+    }
+  }
+`;
+
+export const StyledHeroListPage = styled(StyledMain)`
+  & .paginationButtons {
+    margin-top: 40px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    & button {
+      border: 2px solid gray;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      & svg {
+        width: 80%;
+        height: 80%;
+      }
     }
   }
 `;

@@ -1,19 +1,33 @@
 import { StyledInfoPage } from "./PageStyles";
 import { useParams } from "react-router-dom";
-import { editHeroTextData, getHeroByID, addImages } from "../service/backAPI";
+import {
+  editHeroTextData,
+  getHeroByID,
+  addImages,
+  deleteImage,
+  delereHero,
+} from "../service/backAPI";
 import { useState, useEffect } from "react";
 import { BsPencilSquare } from "react-icons/bs";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { EditInput } from "../components/EditInput/EditInput";
+import { GrClose } from "react-icons/gr";
+import { showLoader, hideLoader } from "../redux/slices";
+import { useDispatch } from "react-redux";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 export const InfoPage = () => {
   const { id } = useParams();
   const [data, setData] = useState(undefined);
   const [edit, setEdit] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const editButtonClick = () => {
     setEdit(!edit);
   };
   const onFieldEdit = (fieldName, value) => {
+    dispatch(showLoader());
     editHeroTextData(fieldName, id, value)
       .then(() => {
         setData((prev) => {
@@ -25,6 +39,46 @@ export const InfoPage = () => {
       .catch((err) => {
         console.log(`${fieldName} patch error`);
         console.log(err);
+      })
+      .finally(() => {
+        dispatch(hideLoader());
+      });
+  };
+
+  const onDelete = () => {
+    dispatch(showLoader());
+    delereHero(id)
+      .then(() => {
+        navigate("/heroList");
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        dispatch(hideLoader());
+      });
+  };
+
+  const onDeletePhoto = (photoId) => {
+    dispatch(showLoader());
+    deleteImage(id, photoId)
+      .then(() => {
+        getHeroByID(id)
+          .then((result) => {
+            setData(result.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => {
+            dispatch(hideLoader());
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        dispatch(hideLoader());
       });
   };
 
@@ -32,19 +86,25 @@ export const InfoPage = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
     formData.append("id", id);
+    dispatch(showLoader());
     addImages(formData)
       .then(() => {
-        setEdit(false);
         getHeroByID(id)
           .then((result) => {
             setData(result.data);
           })
           .catch((err) => {
             console.log(err);
+          })
+          .finally(() => {
+            dispatch(hideLoader());
           });
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        dispatch(hideLoader());
       });
   };
 
@@ -66,6 +126,11 @@ export const InfoPage = () => {
           <AiOutlineEyeInvisible className="svg" />
         )}
       </button>
+      {edit && (
+        <button className="editButton deleteButton" onClick={onDelete}>
+          <RiDeleteBinLine className="svg" />
+        </button>
+      )}
       {data && (
         <div>
           <div className="mainInfo">
@@ -163,6 +228,7 @@ export const InfoPage = () => {
                   type="file"
                   name="Image"
                   accept="image/jpeg,image/png,image/gif"
+                  multiple
                 />
                 <button type="submit">add photo</button>
               </form>
@@ -171,6 +237,15 @@ export const InfoPage = () => {
               <ul className="photoList">
                 {data.Images.map((item) => (
                   <li key={item.id}>
+                    {edit && (
+                      <button
+                        onClick={() => {
+                          onDeletePhoto(item.id);
+                        }}
+                      >
+                        <GrClose />
+                      </button>
+                    )}
                     <img src={item.url} alt={data.nickname} />
                   </li>
                 ))}

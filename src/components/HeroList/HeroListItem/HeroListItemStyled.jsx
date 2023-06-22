@@ -8,6 +8,9 @@ export const HeroListItemStyled = styled.li`
   padding-top: 10px;
   text-align: center;
   border-radius: 20px;
+  &:hover {
+    box-shadow: 0px 0px 10px black;
+  }
   & p {
     color: black;
     font-size: 20px;

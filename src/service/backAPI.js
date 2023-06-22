@@ -61,3 +61,25 @@ export const addImages = async (data) => {
     console.log(err);
   }
 };
+
+export const deleteImage = async (id, imageId) => {
+  try {
+    const result = await axios.patch(`/hero/image/${imageId}`, {
+      id,
+    });
+    return result.data;
+  } catch (err) {
+    console.log("create user axios error");
+    console.log(err);
+  }
+};
+
+export const delereHero = async (id) => {
+  try {
+    const result = await axios.delete(`/hero/${id}`);
+    return result.data;
+  } catch (err) {
+    console.log("create user axios error");
+    console.log(err);
+  }
+};

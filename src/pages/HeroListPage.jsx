@@ -3,8 +3,10 @@ import { getHeros } from "../redux/operations";
 import { HeroList } from "../components/HeroList/HeroList";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { StyledMain } from "./PageStyles";
+import { StyledHeroListPage } from "./PageStyles";
 import { useState } from "react";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import styled from "styled-components";
 
 export const HeroListPage = () => {
   const dispatch = useDispatch();
@@ -29,12 +31,16 @@ export const HeroListPage = () => {
     dispatch(getHeros(page));
   }, [dispatch, page]);
   return (
-    <StyledMain>
+    <StyledHeroListPage>
       <HeroList list={heroes} />
-      <div>
-        <button onClick={onPrev}>prev</button>
-        <button onClick={onNext}>next</button>
+      <div className="paginationButtons">
+        <button onClick={onPrev}>
+          <AiOutlineArrowLeft />
+        </button>
+        <button onClick={onNext}>
+          <AiOutlineArrowRight />
+        </button>
       </div>
-    </StyledMain>
+    </StyledHeroListPage>
   );
 };

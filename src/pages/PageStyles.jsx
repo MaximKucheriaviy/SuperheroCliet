@@ -4,6 +4,7 @@ export const StyledMain = styled.main`
   padding-top: 40px;
   padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 40px;
 `;
 
 export const StyledInfoPage = styled(StyledMain)`
@@ -115,6 +116,49 @@ export const StyledInfoPage = styled(StyledMain)`
   & .catchPrase {
     & input {
       width: 600px;
+    }
+  }
+`;
+
+export const CreateHeroPageStyled = styled(StyledMain)`
+  & .addForm {
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    & .inputField {
+      margin-top: 20px;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    & label {
+      font-size: 24px;
+      display: block;
+    }
+    & input {
+    }
+    & input,
+    textarea {
+      width: 600px;
+      font-size: 24px;
+      display: block;
+      border-radius: 20px;
+      resize: none;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    & .textArea {
+      align-items: flex-start;
+    }
+    & button {
+      width: 200px;
+      height: 70px;
+      margin-top: 50px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      font-size: 34px;
     }
   }
 `;

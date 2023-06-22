@@ -20,19 +20,18 @@ export const EditInput = ({
   };
   useEffect(() => {
     setContent(initText);
-    console.log("Effect");
   }, [initText]);
   return (
     <div className={className}>
-      <label htmlFor={id}>{`${label}: `}</label>
+      <label htmlFor={id.current}>{`${label}: `}</label>
       {!multy ? (
-        <input type={type} value={content} id={id} onChange={onChage} />
+        <input type={type} value={content} id={id.current} onChange={onChage} />
       ) : (
         <textarea
           name=""
           value={content}
           type={type}
-          id={id}
+          id={id.current}
           cols="30"
           rows="10"
           onChange={onChage}

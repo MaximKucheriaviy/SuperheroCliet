@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = "http://192.168.0.104:3001";
+axios.defaults.baseURL = "https://superhero-server-we7h.onrender.com";
 
 export const getAllHeros = async (page = 1) => {
   try {

@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { StyledHeroListPage } from "./PageStyles";
 import { useState } from "react";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
-import styled from "styled-components";
 
 export const HeroListPage = () => {
   const dispatch = useDispatch();
@@ -26,7 +25,6 @@ export const HeroListPage = () => {
     }
   };
 
-  console.log(heroes);
   useEffect(() => {
     dispatch(getHeros(page));
   }, [dispatch, page]);

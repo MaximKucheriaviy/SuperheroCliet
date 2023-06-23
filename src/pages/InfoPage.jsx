@@ -109,14 +109,18 @@ export const InfoPage = () => {
   };
 
   useEffect(() => {
+    dispatch(showLoader());
     getHeroByID(id)
       .then((result) => {
         setData(result.data);
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        dispatch(hideLoader());
       });
-  }, [id]);
+  }, [id, dispatch]);
   return (
     <StyledInfoPage>
       <button className="editButton" onClick={editButtonClick}>

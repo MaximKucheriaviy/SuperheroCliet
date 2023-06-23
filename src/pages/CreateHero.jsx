@@ -122,6 +122,7 @@ export const CreateHero = () => {
         <div className="inputField">
           <label htmlFor={superpowersID.current}>Photo</label>
           <input
+            accept="image/jpeg,image/png,image/gif"
             type="file"
             multiple
             id={catchPhrase.current}

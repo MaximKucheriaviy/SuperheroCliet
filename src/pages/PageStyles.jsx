@@ -74,7 +74,7 @@ export const StyledInfoPage = styled(StyledMain)`
     }
   }
   & .deleteButton {
-    right: 100px;
+    top: 90px;
     background-color: #ff6600;
     &:hover {
       background-color: #ff0000;

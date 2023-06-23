@@ -4,7 +4,6 @@ import { Home } from "./pages/Home";
 import { HeroListPage } from "./pages/HeroListPage";
 import { InfoPage } from "./pages/InfoPage";
 import { CreateHero } from "./pages/CreateHero";
-import { EditHeroPage } from "./pages/EditHeroPage";
 import { Loader } from "./components/Loader/Loader";
 import { useSelector } from "react-redux";
 
@@ -18,7 +17,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/createHero" element={<CreateHero />} />
         <Route path="/hero/:id" element={<InfoPage />} />
-        <Route path="/editHero/:id" element={<EditHeroPage />} />
         <Route path="/heroList" element={<HeroListPage />} />
       </Routes>
       {loaderState && <Loader />}
